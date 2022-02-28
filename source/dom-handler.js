@@ -1,13 +1,13 @@
-import STORE from "./store";
-
 const DOMHandler = ((selector) => {
   const parent = document.querySelector(selector);
 
   return {
-    load(page) {
-      localStorage.setItem("currentPage", page.name);
-      parent.innerHTML = page;
-      page.addListeners();
+    load(module) {
+      // localStorage.setItem("currentmodule", module.name);
+      parent.innerHTML = module;
+      module.addListeners();
     },
   };
-})("#root");
+})("#root")
+
+export default DOMHandler

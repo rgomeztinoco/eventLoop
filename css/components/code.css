@@ -1,0 +1,16 @@
+.code__log {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.code__line {
+  margin-left: 5.75rem;
+  padding: 1rem 0;
+  transition: all 0.5s;
+}
+
+.code__arrow {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 2rem;
+}

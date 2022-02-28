@@ -1,0 +1,60 @@
+/* Utils */
+.container {
+  background: linear-gradient(
+      258.52deg,
+      var(--color-secondary) -132.34%,
+      rgba(55, 25, 202, 0) 22.57%
+    ),
+    linear-gradient(
+      0.788turn,
+      hsla(17, 68%, 75%, 0) 45.54%,
+      hsla(17, 68%, 75%, 0.19) 130.68%
+    ),
+    linear-gradient(3.27deg, var(--background) 13.68%, #262147 142.62%);
+  box-shadow: 70px 120px 150px -30px rgba(2, 2, 30, 0.6);
+}
+
+.container--explanation {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.card {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.bubble {
+  height: 5rem;
+  width: 15rem;
+  display: grid;
+  place-items: center;
+  white-space: nowrap;
+  border-radius: 2.5rem;
+  background-color: var(--color-auxiliar);
+  transition: all 1s;
+}
+
+.bubble__text {
+  max-width: 13rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.vanish {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.replace {
+  
+}

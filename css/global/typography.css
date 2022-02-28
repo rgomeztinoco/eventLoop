@@ -1,0 +1,32 @@
+/* Typography */
+.title {
+  font-size: 4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title--sm {
+  font-size: 2rem;
+}
+
+.link {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.content--lg {
+  font-size: 4rem;
+}
+
+.content--md {
+  font-size: 3.2rem;
+}
+
+.content--sm {
+  font-size: 1.6rem;
+}
+
+.content--xs {
+  font-size: 1.2rem;
+}
