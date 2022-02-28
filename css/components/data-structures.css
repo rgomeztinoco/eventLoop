@@ -1,0 +1,10 @@
+.data-structures {
+  /* width: ; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.data-structures__memory-heap, .data-structures__call-stack {
+  width: 50px;
+  height: 100px;
+}

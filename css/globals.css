@@ -1,0 +1,85 @@
+/* Variables */
+:root {
+  --color-principal: #F0F0F0;
+  --color-secondary: #3719ca;
+  --color-auxiliar: #3E497A;
+  --background: #02021e;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-principal);
+  background-color: var(--color-secondary);
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-principal) transparent;
+}
+
+.main-section {
+  flex: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 2.5rem;
+  display: grid;
+  place-items: center;
+  scroll-snap-align: start;
+}
+
+/* Typography */
+.title {
+  font-size: 4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.link {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.content--lg {
+  font-size: 4rem;
+}
+
+.content--md {
+  font-size: 3.2rem;
+}
+
+.content--sm {
+  font-size: 1.6rem;
+}
+
+/* Utils */
+.container {
+  background: linear-gradient(258.52deg,#3719ca -132.34%,rgba(55,25,202,0) 22.57%),linear-gradient(.788turn,hsla(17,68%,75%,0) 45.54%,hsla(17,68%,75%,.19) 130.68%),linear-gradient(3.27deg,var(--background) 13.68%,#262147 142.62%);
+  box-shadow: 70px 120px 150px -30px rgba(2,2,30,.6);
+}

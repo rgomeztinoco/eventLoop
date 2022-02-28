@@ -1,0 +1,29 @@
+.event-loop {
+  display: flex;
+  justify-content: space-around;
+}
+
+.event-loop__icon-container {
+  width: 35rem;
+  height: 35rem;
+  padding: 7.5rem;
+  border-radius: 50%;
+}
+
+.event-loop__icon-container:hover .event-loop__icon {
+  transform: rotate(360deg);
+  transition: all 1s;
+}
+
+.event-loop__icon {
+  width: 100%;
+  height: 100%;
+}
+
+.event-loop__body {
+  max-width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
