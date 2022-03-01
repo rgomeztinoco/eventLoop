@@ -12,7 +12,7 @@ function render() {
   return `
   <div class="code" id="${this.CODE_NAME}" tabindex="0">
     <div class="code__container container">
-      <img src="/assets/images/${this.CODE_NAME}.png" alt="code snippet">
+      <img src="assets/images/${this.CODE_NAME}.png" alt="code snippet">
       <div class="code__log">
         ${this.CODE_LINES.map((line) => renderCodeLine(line)).join("")}
         ${renderArrow("code__arrow")}

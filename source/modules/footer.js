@@ -3,7 +3,7 @@ const template = `
   <div class="footer__item">
     <span>Hecho por Ricardo Gómez</span>
     <img
-      src="/assets/images/perfil_300.jpg"
+      src="assets/images/perfil_300.jpg"
       alt="author picture"
       class="footer__profile"
     />
