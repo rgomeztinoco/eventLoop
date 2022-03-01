@@ -1,36 +1,27 @@
-import DataStructures from "../pages/data-structures.js"
-import EventLoop from "../pages/event-loop.js"
-import renderLoop from "../svg/loop.js"
+import EventLoop from "../pages/event-loop.js";
+import DataStructures from "../pages/data-structures.js";
+import TaskQueue from "../pages/task-queue.js";
+import { wrapInSectionContainer } from "./helpers.js";
+import Quiz from "../pages/quiz.js";
 
 const template = `
 <main>
-  ${EventLoop}
-  ${DataStructures}
-  <section class="main-section" id="js-task-queue">
-    <div class="event-loop">
-      <div class="event-loop__icon-container">
-        ${renderLoop("event-loop__icon")}
-      </div>
-      <div class="event-loop__body">
-        <h2 class="title">¿qué es el event loop? 2</h2>
-        <p class="content--md">
-          Es la funcionalidad de JavaScript que le permite realizar tareas de
-          forma asíncrona a pesar de funcionar en un solo hilo. Es decir que
-          solamente puede ejecutar una tarea a la vez.
-        </p>
-      </div>
-    </div>
-  </section>
+  ${wrapInSectionContainer(EventLoop)}
+  ${wrapInSectionContainer(DataStructures)}
+  ${wrapInSectionContainer(TaskQueue)}
+  ${wrapInSectionContainer(Quiz)}
 </main>
-`
+`;
 
 const Main = {
   toString() {
-    return template
+    return template;
   },
   addListeners() {
-    DataStructures.addListeners()
-  }
-}
+    DataStructures.addListeners();
+    TaskQueue.addListeners();
+    Quiz.addListeners();
+  },
+};
 
-export default Main
+export default Main;

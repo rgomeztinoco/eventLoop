@@ -1,5 +1,10 @@
-import { renderBubble, renderCard } from "../modules/helpers.js";
-import renderArrow from "../svg/arrow.js";
+import Code from "../modules/code.js";
+import {
+  renderBubble,
+  renderCallStack,
+  renderCard,
+} from "../modules/helpers.js";
+import STORE from "../store.js";
 
 const MEMORY = [
   { content: `name = `, toReplace: `"Jon"` },
@@ -10,120 +15,62 @@ const MEMORY = [
 
 function renderMemoryHeap() {
   return `
-  <div class="data-structures__memory-heap container" id="memory-heap-1">
+  <div class="data-structures__memory-heap container" id="memory-heap-${DataStructures.pageId}">
     ${MEMORY.map(renderBubble).join("")}
-  </div>
-  `;
-}
-
-const SETS_OF_CALLS = [
-  [{ content: `sayHello` }, { content: `getFullname` }],
-  [{ content: `printMessage` }],
-];
-
-function renderCallStack() {
-  return `
-  <div class="data-structures__call-stack container" id="call-stack-1">
-    ${renderBubble({content: `(global)`, visible: (DataStructures.currentCallsSet != 0)})}
-    ${SETS_OF_CALLS[DataStructures.currentCallsSet].map(renderBubble).join("")}
   </div>
   `;
 }
 
 function render() {
   return `
-  <section class="main-section" id="js-data-structures">
-    <div class="data-structures">
-      <div class="data-structures__interactive">
-        <div class="container--explanation">
-          ${renderCard(
-            "Memory heap",
-            "Almacena los valores de las variables y las funciones. Los valores no se guardan de forma ordenada"
-          )}
-          ${renderMemoryHeap()}
-        </div>
-        <div class="container--explanation">
-          ${renderCard("call stack", "click on the image to run the code")}
-          ${renderCallStack()}
-        </div>
-        </div>
-      <div class="container--explanation">
-        ${renderCard("code", "click on the image to run the code")}
-        <div class="container data-structures__code" id="jon-snow" tabindex="0">
-          <img src="/assets/images/jon-snow.png" alt="code snippet">
-          <div class="code__log">
-            <p class="content--sm code__line vanish">Hello I'm JonSnow</p>
-            ${renderArrow("code__arrow")}
-          </div>
-        </div>
-      </div>
+  <div class="data-structures__interactive">
+    <div class="container--explanation">
+      ${renderCard(
+        "Memory heap",
+        "Almacena los valores de las variables y las funciones. Los valores no se guardan de forma ordenada"
+      )}
+      ${renderMemoryHeap()}
     </div>
-  </section>
+    <div class="container--explanation">
+      ${renderCard(
+        "call stack",
+        "Es una estructura de datos en la cual se van apilando las tareas. La ultima tarea en entrar será la primera en ejecutarse."
+      )}
+      ${renderCallStack.call(this)}
+    </div>
+  </div>
+  <div class="container--explanation">
+    ${renderCard("ejemplo", "click en la imagen para correr el código")}
+    ${Code.toString.call(this)}
+  </div>
   `;
-}
-
-function unvanish(element) {
-  element.classList.remove("vanish")
-}
-
-function listenCode() {
-  const code = document.querySelector("#jon-snow");
-  code.addEventListener("click", (event) => {
-    if (DataStructures.currentTarget == "heap") {
-      const heap = document.querySelector("#memory-heap-1");
-      const vanished = [...heap.querySelectorAll(".vanish")];
-
-      if (vanished.length > 0) {
-        vanished.forEach(unvanish);
-        return
-      }
-
-      const toReplace = heap.querySelector(".replace")
-      if (toReplace) {
-        toReplace.innerHTML = `"${toReplace.dataset.replace}"`
-        toReplace.classList.remove("replace")
-        return
-      }
-      DataStructures.currentTarget = "stack"
-    }
-
-    const isStacking = DataStructures.currentTarget == "stack" && DataStructures.currentAction == "unvanish"
-    const stack = document.querySelector("#call-stack-1")
-    if (isStacking) {
-      const vanished = stack.querySelector(".vanish")
-  
-      if (vanished) {
-        vanished.classList.remove("vanish")
-        return
-      }
-      DataStructures.currentAction = "vanish"
-    }
-
-    let toVanish = stack.querySelectorAll(".bubble:not(.vanish)")
-    const numberOfElements = toVanish.length
-    console.log("toVanish")
-    
-    if (numberOfElements == 1 && DataStructures.currentCallsSet == 0) {
-      DataStructures.currentCallsSet++
-      stack.outerHTML = renderCallStack()
-      DataStructures.currentAction = "unvanish"
-      setTimeout(() => {unvanish(document.querySelector(".vanish"))},0)
-    }
-
-    toVanish[numberOfElements - 1].classList.add("vanish")
-  });
 }
 
 const DataStructures = {
   toString() {
-    return render();
+    return render.call(this);
   },
   addListeners() {
-    listenCode();
+    Code.listen.call(this);
   },
-  currentCallsSet: 0,
   currentAction: "unvanish",
   currentTarget: "heap",
+  currentCallsSet: 0,
+  SETS_OF_CALLS: [
+    [
+      { content: "(global)", visible: false },
+      { content: `sayHello` },
+      { content: `getFullname` },
+    ],
+    [
+      { content: "(global)", visible: true },
+      { content: `printMessage`, data: ["show-log"] },
+    ],
+  ],
+  pageId: ++STORE.currentID,
+  CODE_NAME: "jon-snow",
+  CODE_LINES: ["Hello I'm JonSnow"],
+  arrowPosition: [0, 3.5, 7.4, 35.5, 21.4, 13.4, 21.4, 35.5, 29.3, 0],
 };
 
 export default DataStructures;

@@ -1,7 +1,7 @@
 .data-structures {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
   gap: 10rem;
 }
 
@@ -41,29 +41,3 @@
   grid-row-start: 7;
 }
 
-.data-structures__call-stack {
-  padding: 2.5rem;
-  height: 40rem;
-  width: 20rem;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 1.5rem;
-  border-radius: 2.5rem;
-}
-
-.data-structures__code {
-  position: relative;
-  width: 100%;
-  border: none;
-  border-radius: 2.5rem;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.5;
-}
-
-.data-structures__code:active {
-  transform: translateY(0.3rem);
-  outline: 2px solid var(--background);
-  outline-offset: 3px;
-  transition: all 0.5;
-}

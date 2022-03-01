@@ -1,3 +1,22 @@
+.code {
+  position: relative;
+  width: 40rem;
+  cursor: pointer;
+}
+
+.code__container {
+  border-radius: 2.5rem;
+  overflow: hidden;
+  transition: all 0.1s;
+}
+
+.code__container:active {
+  transform: translateY(0.3rem);
+  outline: 2px solid var(--background);
+  outline-offset: 3px;
+  transition: all 0.1s;
+}
+
 .code__log {
   display: grid;
   grid-auto-flow: row;
@@ -13,4 +32,13 @@
   position: absolute;
   bottom: 0.75rem;
   left: 2rem;
+}
+
+.code__long-arrow {
+  position: absolute;
+  top: 0;
+  left: -5rem;
+  height: 5rem;
+  width: 5rem;
+  transition: all 1s;
 }
